@@ -7,7 +7,7 @@ services:
       dockerfile: ../../dockerfiles/api-gw-Dockerfile
     env_file: .env
     environment:
-      API_GW_ADDR: api-gw
+      API_GW_HOST: api-gw
     volumes:
       - ./projects/api-gw:/application
     ports:
@@ -19,7 +19,7 @@ services:
       dockerfile: ../../dockerfiles/test-Dockerfile
     env_file: .env
     environment:
-      API_GW_ADDR: api-gw
+      API_GW_HOST: api-gw
     depends_on:
       - api-gw
   # CUSTOMER FRONTEND - "npm start"
@@ -29,7 +29,7 @@ services:
       dockerfile: ../../dockerfiles/customer-fe-Dockerfile
     env_file: .env
     environment:
-      API_GW_ADDR: api-gw
+      API_GW_HOST: api-gw
     volumes:
       - ./projects/customer-fe:/app
     ports:
