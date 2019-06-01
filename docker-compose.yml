@@ -4,3 +4,16 @@ services:
   api-gw:
     build:
       context: ./api-gw
+    volumes:
+      - ./api-gw:/application
+    ports:
+      - "8000:8000"
+  customer-fe:
+    build:
+      context: ./customer-fe
+    volumes:
+      - ./customer:/application
+    ports:
+    - "3000:3000"
+    depends_on:
+      - api-gw
