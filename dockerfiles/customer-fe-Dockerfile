@@ -1,0 +1,9 @@
+FROM jonbaldie/yarn
+
+WORKDIR /app
+
+RUN /root/.yarn/bin/yarn install
+RUN /root/.yarn/bin/yarn test
+CMD ["sh", "-c", "yarn start"]
+
+EXPOSE 3000

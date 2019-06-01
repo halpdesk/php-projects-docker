@@ -1,0 +1,8 @@
+FROM php:fpm-alpine
+
+WORKDIR /application
+
+# CMD ["php", "artisan", "serve"]
+CMD ["sh", "-c", "php artisan serve --host=$API_GW_ADDR"]
+
+EXPOSE 8000
