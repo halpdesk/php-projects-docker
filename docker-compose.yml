@@ -1,18 +1,44 @@
 version: '3'
 
 services:
+
+  # API GATEWAY
+  # "php artisan serve"
   api-gw:
     build:
-      context: ./api-gw
+      context: ./projects/api-gw
+      dockerfile: ../../dockerfiles/api-gw-Dockerfile
+    env_file: .env
+    environment:
+      API_GW_ADDR: api-gw
     volumes:
-      - ./api-gw:/application
+      - ./projects/api-gw:/application
     ports:
-      - "8000:8000"
+      - "5081:8000"
+
+  # TEST API GW IS RUNNING
+  # "curl api-gw"
+  test:
+    build:
+      context: ./projects/test
+      dockerfile: ../../dockerfiles/test-Dockerfile
+    env_file: .env
+    environment:
+      API_GW_ADDR: api-gw
+    depends_on:
+      - api-gw
+
+  # CUSTOMER FRONTEND
+  # "node start"
   customer-fe:
     build:
-      context: ./customer-fe
+      context: ./projects/customer-fe
+      dockerfile: ../../dockerfiles/customer-fe-Dockerfile
+    env_file: .env
+    environment:
+      API_GW_ADDR: api-gw
     volumes:
-      - ./customer:/application
+      - ./projects/customer-fe:/app
     ports:
     - "3000:3000"
     depends_on:
