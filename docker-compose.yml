@@ -1,9 +1,6 @@
 version: '3'
-
 services:
-
-  # API GATEWAY
-  # "php artisan serve"
+  # API GATEWAY - "php artisan serve"
   api-gw:
     build:
       context: ./projects/api-gw
@@ -14,10 +11,8 @@ services:
     volumes:
       - ./projects/api-gw:/application
     ports:
-      - "5081:8000"
-
-  # TEST API GW IS RUNNING
-  # "curl api-gw"
+      - "8000:8000"
+  # TEST API GW IS RUNNING - "curl api-gw"
   test:
     build:
       context: ./projects/test
@@ -27,9 +22,7 @@ services:
       API_GW_ADDR: api-gw
     depends_on:
       - api-gw
-
-  # CUSTOMER FRONTEND
-  # "node start"
+  # CUSTOMER FRONTEND - "npm start"
   customer-fe:
     build:
       context: ./projects/customer-fe
