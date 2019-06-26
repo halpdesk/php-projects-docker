@@ -1,9 +1,0 @@
-FROM php:fpm-alpine
-
-WORKDIR /application
-
-# CMD ["php", "artisan", "serve"]
-RUN php -v
-CMD ["sh", "-c", "php artisan serve --host=$API_GW_HOST"]
-
-EXPOSE 8000

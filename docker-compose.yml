@@ -1,38 +1,14 @@
 version: '3'
 services:
-  # API GATEWAY - "php artisan serve"
-  api-gw:
+  # laravel-stripe
+  larvel-stripe:
     build:
-      context: ./projects/api-gw
-      dockerfile: ../../dockerfiles/api-gw-Dockerfile
+      context: ./../laravel-stripe
+      dockerfile: ../docker/dockerfiles/larvel-stripe-Dockerfile
     env_file: .env
     environment:
       API_GW_HOST: api-gw
     volumes:
-      - ./projects/api-gw:/application
+      - ./../laravel-stripe:/application
     ports:
       - "8000:8000"
-  # TEST API GW IS RUNNING - "curl api-gw"
-  test:
-    build:
-      context: ./projects/test
-      dockerfile: ../../dockerfiles/test-Dockerfile
-    env_file: .env
-    environment:
-      API_GW_HOST: api-gw
-    depends_on:
-      - api-gw
-  # CUSTOMER FRONTEND - "npm start"
-  customer-fe:
-    build:
-      context: ./projects/customer-fe
-      dockerfile: ../../dockerfiles/customer-fe-Dockerfile
-    env_file: .env
-    environment:
-      API_GW_HOST: api-gw
-    volumes:
-      - ./projects/customer-fe:/app
-    ports:
-    - "3000:3000"
-    depends_on:
-      - api-gw

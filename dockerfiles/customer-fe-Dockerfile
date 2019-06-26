@@ -1,9 +1,0 @@
-FROM node:12.3.1-alpine
-
-WORKDIR /app
-
-RUN node -v
-RUN npm -v
-CMD ["sh", "-c", "npm start"]
-
-EXPOSE 3000

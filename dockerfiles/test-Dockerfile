@@ -1,6 +1,0 @@
-FROM appropriate/curl:latest
-
-# CMD ["curl", "--head", "-X", "GET", "http://$API_GW_ADDR:8000"]
-CMD ["sh", "-c", "curl --head -X GET http://$API_GW_ADDR:8000"]
-
-EXPOSE 3000
