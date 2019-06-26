@@ -1,7 +1,7 @@
 version: '3'
 services:
   # laravel-stripe
-  larvel-stripe:
+  laravel-stripe:
     build:
       context: ./../laravel-stripe
       dockerfile: ../docker/dockerfiles/larvel-stripe-Dockerfile
