@@ -1,14 +1,28 @@
 version: '3'
 services:
+
+  # minimum-package
+  minimum-package:
+    build:
+      context: ./../minimum-package
+      dockerfile: ../docker/dockerfiles/minimum-package-Dockerfile
+    env_file: .env
+    environment:
+      API_GW_HOST: api-gw
+    volumes:
+      - ./../minimum-package:/application
+    # ports:
+    #   - "8000:8000"
+
   # laravel-stripe
   laravel-stripe:
     build:
       context: ./../laravel-stripe
-      dockerfile: ../docker/dockerfiles/larvel-stripe-Dockerfile
+      dockerfile: ../docker/dockerfiles/minimum-package-Dockerfile
     env_file: .env
     environment:
       API_GW_HOST: api-gw
     volumes:
       - ./../laravel-stripe:/application
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8001:8001"

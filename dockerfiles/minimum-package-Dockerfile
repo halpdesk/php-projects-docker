@@ -11,4 +11,4 @@ WORKDIR /application
 RUN php -v
 CMD ["sh", "-c", "vendor/bin/phpunit"]
 
-EXPOSE 8000
+# EXPOSE 8000
